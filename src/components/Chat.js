@@ -52,7 +52,6 @@ class Chat extends Component {
 
   render() {
     let br = Object(this.props.allMessagesQuery.allMessages).length;
-    //  console.log("br" + br)
     
     return (
       <div className='Chat'>
@@ -83,7 +82,7 @@ class Chat extends Component {
 
     if(this.onEditChat!=null){
       document.getElementById(this.onEditChat).innerHTML=this.state.message;
-    //edit messagess
+    //edit messages
       this.props.updateMessageMutation({
         variables: {
           id: this.onEditChat,

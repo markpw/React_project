@@ -10,7 +10,7 @@ import {
 import {SubscriptionClient} from 'subscriptions-transport-ws'
 import { addGraphQLSubscriptions } from 'add-graphql-subscriptions';
 
-//const projectId = 'cjnn4lghvdr2b01306yiwlt1t'
+
 const projectId = 'cjoimvyqrbmgr0134xcaif5c9'
 
 
@@ -20,9 +20,6 @@ const networkInterface = createNetworkInterface({
   uri: graphQLEndpoint
 })
 
-//const subscriptionsUrl = `wss://subscriptions.graph.cool/v1/${projectId}`
-//test: https://api.graph.cool/simple/v1/cjobbc4cjnxp20174g8zyf569
-//
 
 const subscriptionsClient = new SubscriptionClient(`wss://subscriptions.graph.cool/v1/cjoimvyqrbmgr0134xcaif5c9`, {
   reconnect: true
