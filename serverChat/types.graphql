@@ -1,0 +1,28 @@
+# The following types define the data model of the example service
+# based on which the GraphQL API is generated
+
+type Message @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  text: String! 
+  sentBy: Person @relation(name: "UserMessages")
+}
+
+type Person @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  messages: [Message!]! @relation(name: "UserMessages")
+}
+
+# Uncomment the model below as well
+
+# type Post @model {
+#   id: ID! @isUnique
+#   title: String!
+#
+#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
+#   author: User! @relation(name: "UserPosts")
+# }

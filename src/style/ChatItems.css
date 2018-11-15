@@ -1,0 +1,10 @@
+.totalItems {
+    flex: 1 0 30px;
+    
+    display: flex;
+    text-align: left;
+    background-color: rgba(229, 229, 229, 1);
+    max-height: 30px;
+    align-items: center;
+    padding: 5px;
+  }
