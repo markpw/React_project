@@ -54,16 +54,6 @@ onDeleteMessage = () => {
   }
 
 }
-/*
-const deleteMessage = gql`
-  mutation deleteMessage($id: ID!) {
-    deleteMessage(id: $id) {
-      id
-    }
-  }
-`
-*/
 
-//export default graphql(deleteMessage, {name: 'deleteMessageMutation'})(ChatMessage)
 
 export default ChatMessage
