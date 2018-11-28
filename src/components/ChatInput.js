@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import '../style/ChatInput.css'
 
-
-
 class ChatInput extends Component {
 
   render() {

@@ -77,12 +77,8 @@ class Chat extends Component {
 
 
   _onSend = () => {
-    console.log(`Send: ${this.state.message}`)
-    console.log("ID: " + this.onEditChat)
-
     if (this.onEditChat != null) {
       document.getElementById(this.onEditChat).innerHTML = this.state.message;
-      //edit messages
       this.props.updateMessageMutation({
         variables: {
           id: this.onEditChat,
@@ -109,14 +105,11 @@ class Chat extends Component {
     this.endRef = element
   }
 
-  //Delete message
   _onDeleteChat = (element) => {
-    console.log("DELETE" + element)
     this.onDeleteChat = element
     let id = element;
     this.props.deleteMessageMutation({
       variables: { id }
-
     })
     window.location.reload();
 
@@ -124,7 +117,6 @@ class Chat extends Component {
   }
 
   _onEditChat = (element) => {
-    console.log("RADI" + element)
     this.onEditChat = element
   }
 
@@ -167,15 +159,12 @@ const deleteMessage = gql`
 `
 
 const createMessage = gql`
-  mutation createMessage($text: String!, $sentById: ID!) {
-    createMessage(text: $text, sentById: $sentById) {
+  mutation createMessage($text: String!) {
+    createMessage(text: $text) {
       id
       text
       createdAt
-      sentBy {
-        id
-        name
-      }
+    
     }
   }
 `

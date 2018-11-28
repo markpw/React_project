@@ -10,16 +10,12 @@ class ChatMessage extends Component {
 
   onEditMessage = () => {
     if (!this.props.beingEdited) {
-      console.log("id:" + this.props.id)
-      console.log("Text:" + this.props.message)
-
       document.getElementById("txtChatBox").value = this.props.message;
       this.props.onEdit(this.props.id);
     }
   }
   onDeleteMessage = () => {
     if (!this.props.beingEdited) {
-      console.log("id:" + this.props.id)
       this.props.onDelete(this.props.id);
     }
   }
@@ -28,7 +24,6 @@ class ChatMessage extends Component {
 
     const { onDeleteMessage, onEditMessage } = this;
     const createdAtTimestamp = new Date(this.props.time).getTime()
-    //const nowTimestamp = new Date().getTime()
     const date = moment(createdAtTimestamp).format('D/M/YYYY H:mm');
 
     return (
@@ -52,8 +47,6 @@ class ChatMessage extends Component {
 
     )
   }
-
 }
-
 
 export default ChatMessage
