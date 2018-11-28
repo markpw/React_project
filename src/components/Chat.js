@@ -111,9 +111,11 @@ class Chat extends Component {
     this.props.deleteMessageMutation({
       variables: { id }
     })
-    window.location.reload();
 
-
+   window.location.assign("http://localhost:3000/");
+//   window.location.reload();
+   //window load
+   //this.forceUpdate()
   }
 
   _onEditChat = (element) => {

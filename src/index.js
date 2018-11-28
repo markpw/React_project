@@ -13,7 +13,6 @@ import { addGraphQLSubscriptions } from 'add-graphql-subscriptions';
 
 const projectId = 'cjoimvyqrbmgr0134xcaif5c9'
 
-
 const graphQLEndpoint = `https://api.graph.cool/simple/v1/${projectId}`
 
 const networkInterface = createNetworkInterface({
