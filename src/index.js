@@ -7,7 +7,7 @@ import {
   createNetworkInterface,
   ApolloClient,
 } from 'react-apollo'
-import {SubscriptionClient} from 'subscriptions-transport-ws'
+import { SubscriptionClient } from 'subscriptions-transport-ws'
 import { addGraphQLSubscriptions } from 'add-graphql-subscriptions';
 
 

@@ -1,6 +1,6 @@
-import React,{Component} from 'react';
-import {gql} from 'apollo-boost';
-import {graphql, compose} from 'react-apollo';
+import React, { Component } from 'react';
+import { gql } from 'apollo-boost';
+import { graphql, compose } from 'react-apollo';
 import '../style/Chat.css'
 import ChatInput from './ChatInput'
 import ChatMessages from './ChatMessages'
@@ -29,16 +29,16 @@ const getAllMessagesId = gql`
   {allMessages{id}}
 `
 class Chat extends Component {
-  
+
   state = {
     message: '',
-    id:''
+    id: ''
   }
-  
+
   componentDidMount() {
     this.createMessageSubscription = this.props.allMessagesQuery.subscribeToMore({
       document: newMessageSubscription,
-      updateQuery: (previousState, {subscriptionData}) => {
+      updateQuery: (previousState, { subscriptionData }) => {
         const newMessage = subscriptionData.data.Message.node
         const messages = previousState.allMessages.concat([newMessage])
         return {
@@ -52,46 +52,46 @@ class Chat extends Component {
 
   render() {
     let br = Object(this.props.allMessagesQuery.allMessages).length;
-    
+
     return (
       <div className='Chat'>
         <ChatItems
-           br = {br} 
-         />    
+          br={br}
+        />
         <ChatMessages
           messages={this.props.allMessagesQuery.allMessages || []}
-          value ={(message) => this.setState({message})}
+          value={(message) => this.setState({ message })}
           endRef={this._endRef}
           onEditChat={this._onEditChat}
           onDeleteChat={this._onDeleteChat}
         />
         <ChatInput
           message={this.state.message}
-          onTextInput={(message) => this.setState({message})}
-          onResetText={() => this.setState({message: ''})}
+          onTextInput={(message) => this.setState({ message })}
+          onResetText={() => this.setState({ message: '' })}
           onSend={this._onSend}
         />
       </div>
     )
   }
 
-  
+
   _onSend = () => {
     console.log(`Send: ${this.state.message}`)
-    console.log("ID: "  + this.onEditChat)
+    console.log("ID: " + this.onEditChat)
 
-    if(this.onEditChat!=null){
-      document.getElementById(this.onEditChat).innerHTML=this.state.message;
-    //edit messages
+    if (this.onEditChat != null) {
+      document.getElementById(this.onEditChat).innerHTML = this.state.message;
+      //edit messages
       this.props.updateMessageMutation({
         variables: {
           id: this.onEditChat,
           text: this.state.message
         }
       })
-      this.onEditChat=null;
+      this.onEditChat = null;
     }
-    else{
+    else {
       this.props.createMessageMutation({
         variables: {
           text: this.state.message,
@@ -116,13 +116,13 @@ class Chat extends Component {
     let id = element;
     this.props.deleteMessageMutation({
       variables: { id }
-      
-    }) 
-    window.location.reload(); 
-    
-    
+
+    })
+    window.location.reload();
+
+
   }
-  
+
   _onEditChat = (element) => {
     console.log("RADI" + element)
     this.onEditChat = element
@@ -181,9 +181,9 @@ const createMessage = gql`
 `
 
 export default compose(
-  graphql(createMessage, {name : 'createMessageMutation'}),
+  graphql(createMessage, { name: 'createMessageMutation' }),
   graphql(getAllMessagesId),
-  graphql(allMessages, {name: 'allMessagesQuery'}),
-  graphql(deleteMessage, {name: 'deleteMessageMutation'}),
-  graphql(editMessage, {name: 'updateMessageMutation'})
+  graphql(allMessages, { name: 'allMessagesQuery' }),
+  graphql(deleteMessage, { name: 'deleteMessageMutation' }),
+  graphql(editMessage, { name: 'updateMessageMutation' })
 )(Chat)
