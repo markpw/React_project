@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import '../style/ChatItems.css'
-class ChatItems extends Component {
 
+class ChatItems extends Component {
+   
    render() {
       return (
          <div className="totalItems">

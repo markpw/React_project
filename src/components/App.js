@@ -8,11 +8,9 @@ let name = "MK"
 
 class App extends Component {
   async componentDidMount() {
-
     const result = await this.props.createPersonMutation({
       variables: { name }
     })
-
   }
 
   render() {
