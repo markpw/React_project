@@ -114,8 +114,6 @@ class Chat extends Component {
 
    window.location.assign("http://localhost:3000/");
 //   window.location.reload();
-   //window load
-   //this.forceUpdate()
   }
 
   _onEditChat = (element) => {

@@ -7,13 +7,13 @@ import { graphql } from 'react-apollo';
 
 class ChatMessage extends Component {
 
-
   onEditMessage = () => {
     if (!this.props.beingEdited) {
       document.getElementById("txtChatBox").value = this.props.message;
       this.props.onEdit(this.props.id);
     }
   }
+  
   onDeleteMessage = () => {
     if (!this.props.beingEdited) {
       this.props.onDelete(this.props.id);

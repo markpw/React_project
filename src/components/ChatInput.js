@@ -15,7 +15,7 @@ class ChatInput extends Component {
           autoFocus={true}
           onChange={(e) => this.props.onTextInput(e.target.value)}
           onKeyDown={(e) => {
-            if (e.keyCode === 13) { // ENTER MESSAGE
+            if (e.keyCode === 13) {
               this.props.onSend()
               this.props.onResetText()
             }

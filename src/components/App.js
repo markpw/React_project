@@ -16,14 +16,11 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <Chat name={name} />
     )
   }
 }
-
-
 
 const createPerson = gql`
   mutation createPerson($name: String!) {
@@ -32,6 +29,4 @@ const createPerson = gql`
     }
   }
 `
-
-
 export default graphql(createPerson, { name: 'createPersonMutation' })(App)
